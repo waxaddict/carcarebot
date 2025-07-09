@@ -21,18 +21,17 @@ if st.session_state.page == "home":
     for item in load_common_searches():
         st.markdown(f"- {item}")
 
-    if (query or uploaded_file) and st.button("🔍 Analyze"):
-        st.session_state.query = query
-        st.session_state.uploaded_file = uploaded_file
-        st.session_state.page = "loading"
-        st.experimental_rerun()
+    if query or uploaded_file:
+        if st.button("🔍 Analyze"):
+            st.session_state.query = query
+            st.session_state.uploaded_file = uploaded_file
+            st.session_state.page = "loading"
 
 elif st.session_state.page == "loading":
     st.markdown("<h1 style='text-align: center;'>🔄 Analyzing...</h1>", unsafe_allow_html=True)
     with st.spinner("Thinking..."):
         time.sleep(2)
     st.session_state.page = "results"
-    st.experimental_rerun()
 
 elif st.session_state.page == "results":
     response = get_placeholder_response(st.session_state.query)
