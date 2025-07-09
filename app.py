@@ -28,10 +28,16 @@ if st.session_state.page == "home":
             st.session_state.page = "loading"
 
 elif st.session_state.page == "loading":
+    if "loading_start" not in st.session_state:
+        st.session_state.loading_start = time.time()
+
     st.markdown("<h1 style='text-align: center;'>🔄 Analyzing...</h1>", unsafe_allow_html=True)
     with st.spinner("Thinking..."):
-        time.sleep(2)
-    st.session_state.page = "results"
+        st.write("Please wait while we process your request...")
+
+    if time.time() - st.session_state.loading_start > 2:
+        st.session_state.page = "results"
+        del st.session_state.loading_start
 
 elif st.session_state.page == "results":
     response = get_placeholder_response(st.session_state.query)
