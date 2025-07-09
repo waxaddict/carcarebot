@@ -1,4 +1,3 @@
-
 import streamlit as st
 from utils import load_common_searches, get_placeholder_response
 
@@ -26,18 +25,15 @@ if query or uploaded_file:
     st.divider()
     response = get_placeholder_response(query)
 
-st.markdown(f"### 🛠 Issue Detected:\n{response['issue']}")
-st.markdown(f"### 🧼 Fix:\n{response['fix']}")
-st.markdown(f"### ⭐️ Top Tip:\n{response['tip']}")
+    st.markdown(f"### 🛠 Issue Detected:\n{response['issue']}")
+    st.markdown(f"### 🧼 Fix:\n{response['fix']}")
+    st.markdown(f"### ⭐️ Top Tip:\n{response['tip']}")
 
-st.markdown("### 🎥 Video Tutorial:")
-st.video(response['video_url'])
+    st.markdown("### 🎥 Video Tutorial:")
+    st.video(response['video_url'])
 
-st.markdown("### 🛒 Product Comparison:")
-for product in response['products']:
-    st.image(product['image'], width=100)
-    st.markdown(f"**{product['name']}** — £{product['price']}")
-    st.markdown(f"[Buy Now]({product['buy_url']})")
+    st.markdown("### 🛒 Product Comparison:")
+    for product in response['products']:
         st.image(product['image'], width=100)
         st.markdown(f"**{product['name']}** — £{product['price']}")
         st.markdown(f"[Buy Now]({product['buy_url']})")
