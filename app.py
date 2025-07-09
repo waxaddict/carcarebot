@@ -26,7 +26,6 @@ if query or uploaded_file:
     st.divider()
     response = get_placeholder_response(query)
 
-    st.markdown(f"### 🛠 Issue Detected:
 st.markdown(f"### 🛠 Issue Detected:\n{response['issue']}")
 {response['fix']}")
     st.markdown(f"### ⭐️ Top Tip:
