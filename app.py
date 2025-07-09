@@ -1,5 +1,16 @@
 import streamlit as st
 from utils import load_common_searches, get_placeholder_response
+import time
+
+st.set_page_config(page_title="CarCleanBot", layout="centered")
+
+# --- INIT PAGE STATE ---
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+
+
+import streamlit as st
+from utils import load_common_searches, get_placeholder_response
 
 st.set_page_config(page_title="CarCleanBot", layout="centered")
 
