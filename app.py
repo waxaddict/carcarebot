@@ -27,8 +27,7 @@ if query or uploaded_file:
     response = get_placeholder_response(query)
 
     st.markdown(f"### 🛠 Issue Detected:
-{response['issue']}")
-    st.markdown(f"### 🧼 Fix:
+st.markdown(f"### 🛠 Issue Detected:\n{response['issue']}")
 {response['fix']}")
     st.markdown(f"### ⭐️ Top Tip:
 {response['tip']}")
